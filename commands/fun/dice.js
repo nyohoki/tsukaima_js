@@ -12,6 +12,6 @@ module.exports = {
 		const user = interaction.user;
 		const max = interaction.options.getInteger('sides');
 		const answerValue = Math.floor(Math.random() * `${max}` + 1);
-		await interaction.reply(`${user} rolled a ${answerValue} out of ${max}`);
+		await interaction.reply(`Dice roll! ${user} rolled a ${answerValue} out of ${max}`);
 	}
 };
