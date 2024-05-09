@@ -18,8 +18,6 @@ module.exports = {
 		];
 		const ffxivRNum = Math.floor(Math.random() * responses.length);
 		const answer = responses[ffxivRNum];
-		console.log(`<@&1156018205127618641> time for dailies ${answer}`);
-		await interaction.reply(`<@&1156018205127618641> time for dailies`);
-		await interaction.followUp(`${answer}`);
+		await interaction.reply(`<@&1156018205127618641> time for dailies ${answer}`);
 	}
 }
