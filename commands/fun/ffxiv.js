@@ -25,6 +25,7 @@ module.exports = {
 		const answer = responses[ffxivRNum];
 		const msg = interaction.options.getString('message');
 		console.log(`<@&1156018205127618641>  ${answer}`);
-		await interaction.reply(`<@&1156018205127618641> ${msg} ${answer}`);
+		await interaction.reply(`<@&1156018205127618641> ${msg}`);
+		await interaction.followUp(`${answer}`);
 	}
 }
