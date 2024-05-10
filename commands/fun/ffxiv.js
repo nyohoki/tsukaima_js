@@ -6,6 +6,7 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('message')
 			.setDescription('enter your message')
+			.setRequired(true)
 		),
 	async execute(interaction) {
 		const responses = [
