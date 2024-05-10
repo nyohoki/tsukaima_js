@@ -2,7 +2,11 @@ const {SlashCommandBuilder, MessageAttachment} = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ffxiv')
-		.setDescription('ping ffxiv'),
+		.setDescription('ping ffxiv')
+		.addStringOption(option =>
+			option.setName('message')
+			.setDescription('enter your message')
+		),
 	async execute(interaction) {
 		const responses = [
 			'https://imgur.com/3m4NJ5q',
@@ -18,8 +22,8 @@ module.exports = {
 		];
 		const ffxivRNum = Math.floor(Math.random() * responses.length);
 		const answer = responses[ffxivRNum];
-		console.log(`<@&1156018205127618641> time for dailies ${answer}`);
-		await interaction.reply(`<@&1156018205127618641> time for dailies`);
-		await interaction.followUp(`${answer}`);
+		const msg = interaction.options.getString('message');
+		console.log(`<@&1156018205127618641>  ${answer}`);
+		await interaction.reply(`<@&1156018205127618641> ${msg} ${answer}`);
 	}
 }
