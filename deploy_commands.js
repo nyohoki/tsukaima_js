@@ -1,6 +1,6 @@
 const {REST, Routes} = require('discord.js');
-const {token} = require('./token.json');
-const {gidGFB} = require('./gids.json');
+const {token, gidGFB, gidBake, gidTsu, botId} = require('./token.json');
+// const {gidGFB} = require('./gids.json');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -35,7 +35,11 @@ const rest = new REST().setToken(token);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
-			Routes.applicationGuildCommands("593207915918131251", gidGFB),
+			Routes.applicationGuildCommands(botId, gidGFB),
+			{body: commands},
+			Routes.applicationGuildCommands(botId, gidBake),
+			{body: commands},
+			Routes.applicationGuildCommands(botId, gidTsu),
 			{body: commands}
 		);
 

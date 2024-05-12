@@ -1,20 +1,14 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const {Client, Collection, GatewayIntentBits, Intents} = require('discord.js');
-const {token} = require('./token.json');
+const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
+const {token, fl} = require('./token.json');
 
-const client = new Client({intents: 32767});
+const client = new Client({intents: [32767, GatewayIntentBits.MessageContent]});
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
-/*
-client.on("messageCreate", (message) => {
-  if (message.content.startsWith("ping")) {
-    message.channel.send("pong!");
-  }
-});
-*/
+
 for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -28,6 +22,16 @@ for (const folder of commandFolders) {
 		}
 	}
 }
+
+const flWords = ['slut', 'sluts'];
+
+client.on(Events.MessageCreate, (message) => {
+	if (message.author.bot) return;
+	if (flWords.some((word) => message.content.toLowerCase().includes(word)) &&  message.author.id === fl) {
+		console.log(`freee`);		
+		message.react(`🧦`);
+	}
+});
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
