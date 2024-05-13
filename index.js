@@ -28,7 +28,7 @@ const flWords = ['slut', 'sluts'];
 client.on(Events.MessageCreate, (message) => {
 	if (message.author.bot) return;
 	if (flWords.some((word) => message.content.toLowerCase().includes(word)) &&  message.author.id === fl) {
-		console.log(`freee`);		
+		console.log(`freee`);
 		message.react(`🧦`);
 	}
 });
