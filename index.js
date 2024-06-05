@@ -23,7 +23,7 @@ for (const folder of commandFolders) {
 	}
 }
 
-const flWords = ['slut', 'sluts'];
+const flWords = ['slut', 'sluts', 's l u t'];
 
 client.on(Events.MessageCreate, (message) => {
 	if (message.author.bot) return;
@@ -31,6 +31,10 @@ client.on(Events.MessageCreate, (message) => {
 		console.log(`freee`);
 		message.react(`🧦`);
 	}
+	// fluo msgs
+	/* if (message.author.id === "109935890662477824") {
+		message.react(`<:sataniaglasses:753411458393702470>`);
+	} */
 });
 
 const eventsPath = path.join(__dirname, 'events');
